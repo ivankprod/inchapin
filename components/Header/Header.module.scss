@@ -1,0 +1,42 @@
+@use "@styles/breakpoints";
+@import "@styles/base";
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	position: fixed;
+}
+
+.logotype {
+	position: absolute;
+	left: 50%;
+	margin-top: -8px;
+	transform: translateX(-93px);
+}
+
+.nav,
+.phone {
+	display: inline-flex;
+	align-items: center;
+
+	font-size: 14px;
+	font-weight: 600;
+
+	@include breakpoints.xl {
+		gap: 43px;
+	}
+
+	@include breakpoints.lg {
+		gap: 40px;
+	}
+
+	@include breakpoints.md {
+		gap: 25px;
+	}
+
+	@include breakpoints.sm {
+		gap: 62px;
+	}
+}

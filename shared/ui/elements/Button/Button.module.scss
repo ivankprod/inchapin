@@ -1,0 +1,53 @@
+@import "@styles/base";
+
+.button {
+	display: inline-flex;
+	align-items: center;
+
+	position: relative;
+	padding: 0;
+
+	text-transform: uppercase;
+
+	overflow: hidden;
+}
+
+.button-primary {
+	height: 62px;
+	padding: 24px 69px;
+
+	background-color: $theme-color;
+
+	border-radius: 100px;
+
+	color: $background-color;
+	font-weight: 600;
+}
+
+.button-secondary {
+	background-color: transparent;
+
+	color: $theme-color;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+}
+
+.children {
+	display: flex;
+	flex-direction: column;
+
+	transform-origin: 100% 50%;
+	transform: translate3d(0, 0, 0);
+	transition: transform 0.3s ease-out;
+}
+
+.clone {
+	position: absolute;
+	top: 100%;
+}
+
+.hovered {
+	& .children {
+		transform: translate3d(0, -100%, 0);
+	}
+}

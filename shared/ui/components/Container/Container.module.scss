@@ -1,0 +1,25 @@
+@use "@styles/breakpoints";
+
+.container {
+	padding: 30px;
+
+	@include breakpoints.xl {
+		width: 1770px;
+	}
+
+	@include breakpoints.lg {
+		width: 1440px;
+	}
+
+	@include breakpoints.md {
+		width: 1024px;
+	}
+
+	@include breakpoints.sm {
+		width: 768px;
+	}
+
+	@include breakpoints.xs {
+		width: 360px;
+	}
+}
