@@ -1,4 +1,4 @@
-# INHCAPIN
+# INCHAPIN
 
 Test Next.js / TypeScript project
 
