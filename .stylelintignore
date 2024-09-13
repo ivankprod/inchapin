@@ -1,0 +1,7 @@
+images/
+fonts/
+**/*.js
+**/*.jsx
+**/*.ts
+**/*.tsx
+**/*.ico
