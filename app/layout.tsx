@@ -22,8 +22,10 @@ export default function RootLayout({
 	return (
 		<html lang="ru">
 			<body className={proximaNova.className}>
-				<Header />
-				<Container style={{ marginTop: 103 }}>{children}</Container>
+				<div className="root">
+					<Header />
+					<Container>{children}</Container>
+				</div>
 			</body>
 		</html>
 	);

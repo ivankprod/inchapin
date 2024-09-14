@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import clsx from "clsx";
 
 import { Burger, Container } from "@shared/ui/components";
@@ -19,25 +20,29 @@ const flatOptions: TOption[] = [
 /** @public */
 export const Header: React.FC<TBaseComponent> = ({ className, ...props }) => {
 	return (
-		<Container {...props} className={clsx(styles.header, className)}>
-			<div className={styles.nav}>
-				<Burger>МЕНЮ</Burger>
-				<Select
-					instanceId="header-select"
-					options={flatOptions}
-					isClearable={true}
-					isSearchable={false}
-					placeholder="Выбрать квартиру"
-				/>
-			</div>
-			<Image src={ImageLogo} alt="INCHAPIN" className={styles.logotype} />
-			<div className={styles.phone}>
-				<span>+7 495 527 21 21</span>
-				<Button type="secondary" hoverAnimation>
-					Заказать звонок
-				</Button>
-			</div>
-		</Container>
+		<div {...props} className={clsx(styles.header, className)}>
+			<Container className={styles.content}>
+				<div className={styles.nav}>
+					<Burger>МЕНЮ</Burger>
+					<Select
+						instanceId="header-select"
+						options={flatOptions}
+						isClearable={true}
+						isSearchable={false}
+						placeholder="Выбрать квартиру"
+					/>
+				</div>
+				<Link href="/" className={styles.logotype}>
+					<Image src={ImageLogo} alt="INCHAPIN" />
+				</Link>
+				<div className={styles.phone}>
+					<span>+7 495 527 21 21</span>
+					<Button type="secondary" hoverAnimation>
+						Заказать звонок
+					</Button>
+				</div>
+			</Container>
+		</div>
 	);
 };
 
