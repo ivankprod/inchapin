@@ -3,16 +3,42 @@
 
 .header {
 	display: flex;
+	justify-content: center;
+
+	position: sticky;
+	top: 0;
+	width: 100%;
+}
+
+.content {
+	display: flex;
 	align-items: center;
 	justify-content: space-between;
 
-	position: fixed;
+	padding: 30px 40px;
+}
+
+.header::before {
+	content: "";
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100vw;
+
+	margin-left: 0;
+
+	background-color: rgba($background-color, 80%);
+	backdrop-filter: blur(100px);
+
+	z-index: -1;
 }
 
 .logotype {
 	position: absolute;
 	left: 50%;
-	margin-top: -8px;
+	margin-top: -2px;
 	transform: translateX(-93px);
 }
 
