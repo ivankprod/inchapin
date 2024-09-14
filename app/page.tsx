@@ -7,7 +7,7 @@ import styles from "./page.module.scss";
 
 export default function Home() {
 	return (
-		<main>
+		<main className={styles.main}>
 			<section className={styles.screen1}>
 				<div className={styles.picture1}>
 					<Image
@@ -19,7 +19,12 @@ export default function Home() {
 				<p className={styles.description}>
 					Дом бизнес-класса для ценителей роскоши
 				</p>
-				<Image src={ImageText} alt="Inchapin" draggable={false} />
+				<Image
+					className={styles.text}
+					src={ImageText}
+					alt="Inchapin"
+					draggable={false}
+				/>
 			</section>
 		</main>
 	);
