@@ -20,7 +20,7 @@ export const Burger: React.FC<TBaseComponent<"button">> = ({
 				<Image src={IconBurgerLine} alt="" />
 				<Image src={IconBurgerLine} alt="" />
 			</div>
-			<div>{children}</div>
+			<div className={styles.children}>{children}</div>
 		</button>
 	);
 };

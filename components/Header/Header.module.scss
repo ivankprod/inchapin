@@ -8,6 +8,8 @@
 	position: sticky;
 	top: 0;
 	width: 100%;
+
+	z-index: 1;
 }
 
 .content {
@@ -16,6 +18,22 @@
 	justify-content: space-between;
 
 	padding: 30px 40px;
+
+	@include breakpoints.xl {
+		padding: 40px 10px;
+	}
+
+	@include breakpoints.md {
+		padding: 30px;
+	}
+
+	@include breakpoints.sm {
+		padding: 40px;
+	}
+
+	@include breakpoints.xs {
+		padding: 20px;
+	}
 }
 
 .header::before {
@@ -36,10 +54,42 @@
 }
 
 .logotype {
+	display: flex;
+
 	position: absolute;
 	left: 50%;
-	margin-top: -2px;
-	transform: translateX(-93px);
+
+	margin-top: -4px;
+
+	transform: translateX(-77px);
+
+	@include breakpoints.xl {
+		transform: translateX(-93px);
+	}
+
+	@include breakpoints.xs {
+		margin-top: -8px;
+	}
+
+	& img {
+		width: auto;
+
+		@include breakpoints.lg {
+			height: 25px;
+		}
+
+		@include breakpoints.md {
+			height: 25px;
+		}
+
+		@include breakpoints.sm {
+			height: 25px;
+		}
+
+		@include breakpoints.xs {
+			height: 21px;
+		}
+	}
 }
 
 .nav,
@@ -64,5 +114,54 @@
 
 	@include breakpoints.sm {
 		gap: 62px;
+	}
+}
+
+.select,
+.phone {
+	@include breakpoints.sm {
+		display: none;
+	}
+
+	@include breakpoints.xs {
+		display: none;
+	}
+}
+
+.select-mobile {
+	display: none;
+
+	@include breakpoints.sm {
+		display: inline-block;
+	}
+}
+
+.phone-mobile {
+	display: none;
+	align-items: center;
+	justify-content: center;
+
+	height: 42px;
+	width: 42px;
+
+	border: 1px solid #d7d7d7;
+	border-radius: 50%;
+
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: rgba(#d7d7d7, 30%);
+	}
+
+	@include breakpoints.xs {
+		display: inline-flex;
+	}
+}
+
+.phone-tablet {
+	display: none;
+
+	@include breakpoints.sm {
+		display: inline-flex;
 	}
 }

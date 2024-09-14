@@ -36,3 +36,9 @@
 		filter: brightness(0%);
 	}
 }
+
+.children {
+	@include breakpoints.xs {
+		display: none;
+	}
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useState } from "react";
+import { type ReactNode, CSSProperties, useState } from "react";
 import type {
 	StylesConfig,
 	CSSObjectWithLabel,
@@ -14,8 +14,15 @@ export type TOption = Omit<TBaseComponent<"option">, "label"> & {
 	label: ReactNode;
 };
 
+interface ISelectProps extends SelectProps<TOption> {
+	wrapperStyle?: CSSProperties;
+	wrapperClassName?: string;
+}
+
 /** @public */
-export const Select: React.FC<SelectProps<TOption>> = ({
+export const Select: React.FC<ISelectProps> = ({
+	wrapperStyle,
+	wrapperClassName,
 	className,
 	...props
 }) => {
@@ -83,6 +90,7 @@ export const Select: React.FC<SelectProps<TOption>> = ({
 		singleValue: (styles, { data }) => ({
 			...styles,
 			position: "relative",
+			marginTop: -2,
 			textTransform: "uppercase",
 			color: "var(--background-color)",
 			fontSize: 14,
@@ -94,6 +102,7 @@ export const Select: React.FC<SelectProps<TOption>> = ({
 		placeholder: (styles, { children }) => ({
 			...styles,
 			position: "relative",
+			marginTop: -2,
 			textTransform: "uppercase",
 			color: "var(--background-color)",
 			fontSize: 14,
@@ -113,6 +122,8 @@ export const Select: React.FC<SelectProps<TOption>> = ({
 		<div
 			onMouseEnter={() => setMouseEntered(true)}
 			onMouseLeave={() => setMouseEntered(false)}
+			style={wrapperStyle}
+			className={wrapperClassName}
 		>
 			<ReactSelect
 				{...props}

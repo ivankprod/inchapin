@@ -1,60 +1,94 @@
 @use "@styles/breakpoints";
 @import "@styles/base";
 
+.main {
+	width: 100%;
+}
+
 .screen1 {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: flex-end;
 	justify-content: space-between;
 	gap: 40px;
+
+	@include breakpoints.xl {
+		gap: 50px;
+	}
+
+	@include breakpoints.md {
+		gap: 30px;
+	}
+
+	@include breakpoints.sm {
+		gap: 40px;
+	}
+
+	@include breakpoints.xs {
+		gap: 20px;
+	}
 }
 
 .picture1 {
-	display: flex;
+	width: 100%;
 
 	overflow: hidden;
 
 	@include breakpoints.xl {
-		height: 100px;
-		width: 100px;
+		height: 600px;
 	}
 
 	@include breakpoints.lg {
-		justify-content: flex-end;
-
 		height: 506px;
-		width: 1360px;
 	}
 
 	@include breakpoints.md {
-		height: 100px;
-		width: 100px;
+		height: 411px;
 	}
 
 	@include breakpoints.sm {
-		height: 100px;
-		width: 100px;
+		display: flex;
+		justify-content: center;
+
+		height: 488px;
+	}
+
+	@include breakpoints.xs {
+		display: flex;
+		justify-content: center;
+
+		height: 314px;
 	}
 }
 
 .picture1 > img {
+	position: relative;
+	height: auto;
+
 	@include breakpoints.xl {
-		width: 100px;
+		left: 0;
+		top: -227px;
 	}
 
 	@include breakpoints.lg {
-		height: 868px;
 		width: 1389px;
 
-		margin-top: -168px;
+		right: 0;
+		top: -168px;
 	}
 
 	@include breakpoints.md {
-		width: 100px;
+		width: 964px;
+
+		margin-top: -73px;
 	}
 
 	@include breakpoints.sm {
-		width: 100px;
+		width: 780px;
+	}
+
+	@include breakpoints.xs {
+		width: 502px;
 	}
 }
 
@@ -63,7 +97,55 @@
 
 	color: $theme-color;
 	font-size: 26px;
-	font-weight: 400;
 	line-height: 140%;
 	text-transform: uppercase;
+
+	@include breakpoints.xl {
+		width: 416px;
+
+		font-size: 31px;
+	}
+
+	@include breakpoints.md {
+		width: 255px;
+
+		font-size: 19px;
+	}
+
+	@include breakpoints.xs {
+		width: 175px;
+
+		font-size: 13px;
+	}
+}
+
+.text {
+	@include breakpoints.xl {
+		height: 137px;
+		width: 862px;
+	}
+
+	@include breakpoints.lg {
+		height: 114px;
+		width: 718px;
+	}
+
+	@include breakpoints.md {
+		height: 88px;
+		width: 553.7px;
+	}
+
+	@include breakpoints.sm {
+		height: auto;
+		width: 100%;
+
+		object-fit: contain;
+	}
+
+	@include breakpoints.xs {
+		height: auto;
+		width: 100%;
+
+		object-fit: contain;
+	}
 }
