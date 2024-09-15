@@ -11,8 +11,10 @@ html,
 body {
 	max-width: 100vw;
 
-	display: initial;
-	overflow-x: hidden;
+	// Нужно для работы smooth-scrollbar
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
 }
 
 body {
@@ -65,4 +67,16 @@ textarea {
 
 	position: relative;
 	min-height: 100vh;
+}
+
+.scrollbar-track {
+	width: 10px !important;
+
+	background-color: transparent !important;
+
+	& .scrollbar-thumb {
+		width: 6px !important;
+
+		background: rgba(0 0 0 / 20%) !important;
+	}
 }
