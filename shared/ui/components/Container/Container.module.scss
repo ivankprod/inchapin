@@ -25,7 +25,8 @@
 	}
 
 	@include breakpoints.xs {
-		width: 360px;
+		min-width: 360px;
+		max-width: 540px;
 
 		padding: 0 20px 20px;
 	}
