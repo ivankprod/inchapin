@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { proximaNova } from "@fonts";
-import { Header } from "@components";
+import { Scroller, Header } from "@components";
 import { Container } from "@shared/ui/components";
 
 import "./globals.scss";
@@ -22,6 +22,7 @@ export default function RootLayout({
 	return (
 		<html lang="ru">
 			<body className={proximaNova.className}>
+				<Scroller />
 				<div className="root">
 					<Header />
 					<Container>{children}</Container>

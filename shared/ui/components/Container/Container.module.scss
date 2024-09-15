@@ -2,12 +2,12 @@
 
 .container {
 	width: 100%;
-	padding: 0 40px;
+	padding: 0 40px 40px;
 
 	@include breakpoints.xl {
 		max-width: 1770px;
 
-		padding: 0 10px;
+		padding: 0 5px 80px;
 	}
 
 	@include breakpoints.lg {
@@ -17,7 +17,7 @@
 	@include breakpoints.md {
 		max-width: 1024px;
 
-		padding: 0 30px;
+		padding: 0 30px 30px;
 	}
 
 	@include breakpoints.sm {
@@ -25,9 +25,8 @@
 	}
 
 	@include breakpoints.xs {
-		min-width: 360px;
-		max-width: 520px;
+		width: 360px;
 
-		padding: 0 20px;
+		padding: 0 20px 20px;
 	}
 }

@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 
-import { Burger, Container } from "@shared/ui/components";
+import { Container, Burger } from "@shared/ui/components";
 import { Button } from "@shared/ui/elements";
 import Select, { type TOption } from "@shared/ui/elements/Select";
+
 import type { TBaseComponent } from "@types";
 
 import ImageLogo from "@images/inchapin_logo.svg";
@@ -21,7 +22,7 @@ const flatOptions: TOption[] = [
 /** @public */
 export const Header: React.FC<TBaseComponent> = ({ className, ...props }) => {
 	return (
-		<div {...props} className={clsx(styles.header, className)}>
+		<div {...props} id="header" className={clsx(styles.header, className)}>
 			<Container className={styles.content}>
 				<div className={styles.nav}>
 					<Burger>МЕНЮ</Burger>
@@ -35,10 +36,7 @@ export const Header: React.FC<TBaseComponent> = ({ className, ...props }) => {
 					/>
 					<Link
 						href="/"
-						className={clsx(
-							styles["phone-mobile"],
-							styles["phone-tablet"]
-						)}
+						className={clsx(styles.phoneMobile, styles.phoneTablet)}
 					>
 						<Image src={ImagePhone} alt="INCHAPIN" />
 					</Link>
@@ -53,15 +51,15 @@ export const Header: React.FC<TBaseComponent> = ({ className, ...props }) => {
 					</Button>
 				</div>
 				<Select
-					wrapperClassName={styles["select-mobile"]}
+					wrapperClassName={styles.selectMobile}
 					instanceId="header-select-mobile"
 					options={flatOptions}
 					isClearable={true}
 					isSearchable={false}
 					placeholder="Выбрать квартиру"
 				/>
-				<Link href="/" className={styles["phone-mobile"]}>
-					<Image src={ImagePhone} alt="INCHAPIN" />
+				<Link href="/" className={styles.phoneMobile}>
+					<Image src={ImagePhone} alt="" />
 				</Link>
 			</Container>
 		</div>

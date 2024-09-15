@@ -3,6 +3,8 @@
 import { useState, type ComponentProps, type ElementType } from "react";
 import clsx from "clsx";
 
+import { capitalize } from "@shared/utils";
+
 import styles from "./Button.module.scss";
 
 interface IButtonOwnProps<E extends ElementType = ElementType> {
@@ -53,7 +55,7 @@ export const Button: React.FC<TButtonProps<ElementType>> = <
 			href={href}
 			className={clsx(
 				styles.button,
-				styles["button-" + type],
+				styles["button" + capitalize(type)],
 				mouseEntered && styles.hovered,
 				className
 			)}

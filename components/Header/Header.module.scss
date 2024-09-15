@@ -5,11 +5,11 @@
 	display: flex;
 	justify-content: center;
 
-	position: sticky;
+	position: relative;
 	top: 0;
 	width: 100%;
 
-	z-index: 1;
+	z-index: 2;
 }
 
 .content {
@@ -17,22 +17,22 @@
 	align-items: center;
 	justify-content: space-between;
 
-	padding: 30px 40px;
+	padding: 30px 40px !important;
 
 	@include breakpoints.xl {
-		padding: 40px 10px;
+		padding: 40px 5px !important;
 	}
 
 	@include breakpoints.md {
-		padding: 30px;
+		padding: 30px !important;
 	}
 
 	@include breakpoints.sm {
-		padding: 40px;
+		padding: 40px !important;
 	}
 
 	@include breakpoints.xs {
-		padding: 20px;
+		padding: 20px !important;
 	}
 }
 
@@ -128,7 +128,7 @@
 	}
 }
 
-.select-mobile {
+.selectMobile {
 	display: none;
 
 	@include breakpoints.sm {
@@ -136,7 +136,7 @@
 	}
 }
 
-.phone-mobile {
+.phoneMobile {
 	display: none;
 	align-items: center;
 	justify-content: center;
@@ -147,10 +147,16 @@
 	border: 1px solid #d7d7d7;
 	border-radius: 50%;
 
-	transition: background-color 0.3s ease;
+	transition: 0.3s ease;
+	transition-property: background-color, border-color;
 
 	&:hover {
-		background-color: rgba(#d7d7d7, 30%);
+		background-color: $theme-color;
+		border-color: $theme-color;
+
+		& img {
+			filter: invert(100%);
+		}
 	}
 
 	@include breakpoints.xs {
@@ -158,7 +164,7 @@
 	}
 }
 
-.phone-tablet {
+.phoneTablet {
 	display: none;
 
 	@include breakpoints.sm {
