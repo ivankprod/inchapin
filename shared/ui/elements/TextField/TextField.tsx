@@ -1,12 +1,12 @@
 "use client";
 
-import clsx from "clsx";
+import { useState } from "react";
 import { useMask } from "@react-input/mask";
+import clsx from "clsx";
 
 import type { TBaseComponent } from "@types";
 
 import styles from "./TextField.module.scss";
-import { useState } from "react";
 
 interface ITextFieldProps extends TBaseComponent<"input"> {
 	wrapperClassName?: string;
@@ -50,12 +50,8 @@ export const TextField: React.FC<ITextFieldProps> = ({
 					onFocus?.(e);
 				}}
 			/>
-			{placeholder && (
-				<label className={styles.placeholder}>{placeholder}</label>
-			)}
-			{errorMessage && (
-				<span className={styles.errorMessage}>{errorMessage}</span>
-			)}
+			<label className={styles.placeholder}>{placeholder}</label>
+			<span className={styles.errorMessage}>{errorMessage}</span>
 		</div>
 	);
 };

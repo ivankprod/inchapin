@@ -10,11 +10,11 @@ Test Next.js / TypeScript project
 
 Структура проекта:
 
--   app: роутинг
--   components: компоненты высшего уровня (widgets в FSD)
--   fonts: шрифты
--   images: изображения и иконки
--   sections: секции страниц
--   shared: общие компоненты - ui-kit, utils и т.д.
--   styles: базвые стили
--   types: типы
+- app: роутинг
+- components: компоненты высшего уровня (widgets в FSD)
+- fonts: шрифты
+- images: изображения и иконки
+- sections: секции страниц
+- shared: общие компоненты - ui-kit, utils и т.д.
+- styles: базвые стили
+- types: типы

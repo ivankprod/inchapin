@@ -14,6 +14,7 @@ import styles from "./Modal.module.scss";
 export interface IModalProps extends TBaseComponent {
 	opened?: boolean;
 	inProp: boolean;
+	onClose: () => void;
 }
 
 const defaultStyle = {
@@ -33,6 +34,7 @@ const transitionStyles: {
 
 const ModalChild: React.FC<IModalProps> = ({
 	inProp,
+	onClose,
 	className,
 	children,
 	...props
@@ -41,17 +43,24 @@ const ModalChild: React.FC<IModalProps> = ({
 	const nodeRef = useRef(null);
 
 	useEffect(() => {
+		const handleOnEscape = (e: globalThis.KeyboardEvent) =>
+			e.key == "Escape" && onClose();
+
 		const elem = document.getElementById("modal");
 
-		if (elem)
+		if (elem) {
 			scrollbar.current = SmoothScrollbar.init(elem, {
 				damping: 0.075
 			});
 
+			document.addEventListener("keydown", handleOnEscape, false);
+		}
+
 		return () => {
 			scrollbar.current?.destroy();
+			document.removeEventListener("keydown", handleOnEscape, false);
 		};
-	}, []);
+	}, [onClose]);
 
 	return (
 		<div className={styles.portal}>

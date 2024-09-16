@@ -9,6 +9,7 @@ import { CallbackForm } from "@components";
 import { Container, Burger, Modal } from "@shared/ui/components";
 import { Button, Select } from "@shared/ui/elements";
 import type { TOption } from "@shared/ui/elements/Select";
+import { sleep } from "@shared/utils";
 
 import type { TBaseComponent } from "@types";
 
@@ -16,7 +17,6 @@ import ImageLogo from "@images/inchapin_logo.svg";
 import ImagePhone from "@images/phone.svg";
 
 import styles from "./Header.module.scss";
-import { sleep } from "@shared/utils";
 
 const flatOptions: TOption[] = [
 	{ value: "flat1", label: "Квартира 1" },
@@ -28,6 +28,15 @@ const flatOptions: TOption[] = [
 export const Header: React.FC<TBaseComponent> = ({ className, ...props }) => {
 	const [callbackFormOpened, setCallbackFormOpened] = useState(false);
 	const [callbackFormFade, setCallbackFormFade] = useState(false);
+
+	const handleModalClose = () => {
+		setCallbackFormFade(true);
+
+		sleep(300).then(() => {
+			setCallbackFormOpened(false);
+			setCallbackFormFade(false);
+		});
+	};
 
 	return (
 		<>
@@ -89,21 +98,12 @@ export const Header: React.FC<TBaseComponent> = ({ className, ...props }) => {
 			<Modal
 				opened={callbackFormOpened}
 				inProp={callbackFormFade}
+				onClose={handleModalClose}
 				className={styles.modal}
 			>
 				<CallbackForm />
 				<div className={styles.closeButton}>
-					<Button
-						type="close"
-						onClick={() => {
-							setCallbackFormFade(true);
-
-							sleep(300).then(() => {
-								setCallbackFormOpened(false);
-								setCallbackFormFade(false);
-							});
-						}}
-					/>
+					<Button type="close" onClick={handleModalClose} />
 				</div>
 			</Modal>
 		</>

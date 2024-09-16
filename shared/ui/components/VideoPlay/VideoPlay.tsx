@@ -27,6 +27,15 @@ export const VideoPlay: React.FC<IVideoPlayProps> = ({
 	const [videoOpened, setVideoOpened] = useState(false);
 	const [videoModalFade, setVideoModalFade] = useState(false);
 
+	const handleModalClose = () => {
+		setVideoModalFade(true);
+
+		sleep(300).then(() => {
+			setVideoOpened(false);
+			setVideoModalFade(false);
+		});
+	};
+
 	return (
 		<>
 			<button
@@ -46,7 +55,11 @@ export const VideoPlay: React.FC<IVideoPlayProps> = ({
 					<span>PLAY</span>
 				</div>
 			</button>
-			<Modal opened={videoOpened} inProp={videoModalFade}>
+			<Modal
+				opened={videoOpened}
+				inProp={videoModalFade}
+				onClose={handleModalClose}
+			>
 				<video
 					className={styles.video}
 					src={videoUrl}
@@ -56,17 +69,7 @@ export const VideoPlay: React.FC<IVideoPlayProps> = ({
 					Ваш браузер не поддерживает видео
 				</video>
 				<div className={styles.closeButton}>
-					<Button
-						type="close"
-						onClick={() => {
-							setVideoModalFade(true);
-
-							sleep(300).then(() => {
-								setVideoOpened(false);
-								setVideoModalFade(false);
-							});
-						}}
-					/>
+					<Button type="close" onClick={handleModalClose} />
 				</div>
 			</Modal>
 		</>
