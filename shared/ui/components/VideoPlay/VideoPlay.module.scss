@@ -112,7 +112,7 @@
 }
 
 .video {
-	position: absolute;
+	position: relative;
 	inset: 0;
 
 	height: 100%;
@@ -122,41 +122,17 @@
 }
 
 .closeButton {
-	position: relative;
+	position: absolute;
 	top: 15px;
-	right: -100%;
+	right: 15px;
 
-	height: 34px;
-	width: 34px;
+	& > button {
+		background-color: #000;
 
-	margin-left: -50px;
-
-	background-color: #000;
-
-	border-radius: 50%;
-
-	&::before,
-	&::after {
-		content: "";
-
-		position: absolute;
-		left: 4px;
-		top: 0;
-		right: 4px;
-
-		height: 2px;
-
-		background-color: #fff;
-
-		transform-origin: 50% 50%;
-	}
-
-	&::before {
-		transform: translateY(16px) rotate(45deg);
-	}
-
-	&::after {
-		transform: translateY(16px) rotate(-45deg);
+		&::before,
+		&::after {
+			background-color: #fff;
+		}
 	}
 }
 

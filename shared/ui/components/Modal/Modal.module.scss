@@ -1,7 +1,44 @@
+@use "@styles/breakpoints";
+
+.portal {
+	position: absolute;
+	inset: 0;
+
+	height: 100vh;
+	width: 100vw;
+
+	background-color: #fff;
+
+	z-index: 9;
+}
+
 .wrapper {
 	position: absolute;
 	inset: 0;
 
-	height: 100%;
+	height: 100vh;
+	min-height: 540px;
 	width: 100%;
+
+	z-index: 10;
+
+	@include breakpoints.xl {
+		min-height: 980px;
+	}
+
+	@include breakpoints.lg {
+		min-height: 800px;
+	}
+
+	@include breakpoints.md {
+		min-height: 668px;
+	}
+
+	@include breakpoints.sm {
+		min-height: 924px;
+	}
+
+	@include breakpoints.xs {
+		min-height: 540px;
+	}
 }

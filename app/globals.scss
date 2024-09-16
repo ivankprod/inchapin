@@ -36,7 +36,16 @@ body {
 
 a {
 	color: inherit;
-	text-decoration: none;
+	text-decoration: underline rgba($foreground-color, 0.3);
+
+	transition: 0.3s ease;
+	transition-property: color, text-decoration-color;
+
+	&:hover {
+		color: $theme-color;
+
+		text-decoration-color: $theme-color;
+	}
 }
 
 button,

@@ -5,11 +5,13 @@ import Image from "next/image";
 import clsx from "clsx";
 
 import { Modal } from "@shared/ui/components";
+import { Button } from "@shared/ui/elements";
 import type { TBaseComponent } from "@types";
 
 import IconPlay from "@images/play.svg";
 
 import styles from "./VideoPlay.module.scss";
+import { sleep } from "@shared/utils";
 
 interface IVideoPlayProps extends TBaseComponent<"button"> {
 	videoUrl: string;
@@ -23,6 +25,16 @@ export const VideoPlay: React.FC<IVideoPlayProps> = ({
 }) => {
 	const [mouseEntered, setMouseEntered] = useState(false);
 	const [videoOpened, setVideoOpened] = useState(false);
+	const [videoModalFade, setVideoModalFade] = useState(false);
+
+	const handleModalClose = () => {
+		setVideoModalFade(true);
+
+		sleep(300).then(() => {
+			setVideoOpened(false);
+			setVideoModalFade(false);
+		});
+	};
 
 	return (
 		<>
@@ -43,7 +55,11 @@ export const VideoPlay: React.FC<IVideoPlayProps> = ({
 					<span>PLAY</span>
 				</div>
 			</button>
-			<Modal opened={videoOpened}>
+			<Modal
+				opened={videoOpened}
+				inProp={videoModalFade}
+				onClose={handleModalClose}
+			>
 				<video
 					className={styles.video}
 					src={videoUrl}
@@ -52,10 +68,9 @@ export const VideoPlay: React.FC<IVideoPlayProps> = ({
 				>
 					Ваш браузер не поддерживает видео
 				</video>
-				<button
-					className={styles.closeButton}
-					onClick={() => setVideoOpened(false)}
-				/>
+				<div className={styles.closeButton}>
+					<Button type="close" onClick={handleModalClose} />
+				</div>
 			</Modal>
 		</>
 	);

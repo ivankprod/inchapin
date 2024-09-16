@@ -1,10 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 
-import { Container, Burger } from "@shared/ui/components";
-import { Button } from "@shared/ui/elements";
-import Select, { type TOption } from "@shared/ui/elements/Select";
+import { CallbackForm } from "@components";
+import { Container, Burger, Modal } from "@shared/ui/components";
+import { Button, Select } from "@shared/ui/elements";
+import type { TOption } from "@shared/ui/elements/Select";
+import { sleep } from "@shared/utils";
 
 import type { TBaseComponent } from "@types";
 
@@ -21,48 +26,87 @@ const flatOptions: TOption[] = [
 
 /** @public */
 export const Header: React.FC<TBaseComponent> = ({ className, ...props }) => {
+	const [callbackFormOpened, setCallbackFormOpened] = useState(false);
+	const [callbackFormFade, setCallbackFormFade] = useState(false);
+
+	const handleModalClose = () => {
+		setCallbackFormFade(true);
+
+		sleep(300).then(() => {
+			setCallbackFormOpened(false);
+			setCallbackFormFade(false);
+		});
+	};
+
 	return (
-		<div {...props} id="header" className={clsx(styles.header, className)}>
-			<Container className={styles.content}>
-				<div className={styles.nav}>
-					<Burger>МЕНЮ</Burger>
+		<>
+			<div
+				{...props}
+				id="header"
+				className={clsx(styles.header, className)}
+			>
+				<Container className={styles.content}>
+					<div className={styles.nav}>
+						<Burger>МЕНЮ</Burger>
+						<Select
+							wrapperClassName={styles.select}
+							instanceId="header-select"
+							options={flatOptions}
+							isClearable={true}
+							isSearchable={false}
+							placeholder="Выбрать квартиру"
+						/>
+						<button
+							className={clsx(
+								styles.phoneMobile,
+								styles.phoneTablet
+							)}
+							onClick={() => setCallbackFormOpened(true)}
+						>
+							<Image src={ImagePhone} alt="INCHAPIN" />
+						</button>
+					</div>
+					<Link href="/" className={styles.logotype}>
+						<Image src={ImageLogo} alt="INCHAPIN" />
+					</Link>
+					<div className={styles.phone}>
+						<span>+7 495 527 21 21</span>
+						<Button
+							type="secondary"
+							hoverAnimation
+							onClick={() => setCallbackFormOpened(true)}
+						>
+							Заказать звонок
+						</Button>
+					</div>
 					<Select
-						wrapperClassName={styles.select}
-						instanceId="header-select"
+						wrapperClassName={styles.selectMobile}
+						instanceId="header-select-mobile"
 						options={flatOptions}
 						isClearable={true}
 						isSearchable={false}
 						placeholder="Выбрать квартиру"
 					/>
-					<Link
-						href="/"
-						className={clsx(styles.phoneMobile, styles.phoneTablet)}
+					<button
+						className={styles.phoneMobile}
+						onClick={() => setCallbackFormOpened(true)}
 					>
-						<Image src={ImagePhone} alt="INCHAPIN" />
-					</Link>
+						<Image src={ImagePhone} alt="" />
+					</button>
+				</Container>
+			</div>
+			<Modal
+				opened={callbackFormOpened}
+				inProp={callbackFormFade}
+				onClose={handleModalClose}
+				className={styles.modal}
+			>
+				<CallbackForm />
+				<div className={styles.closeButton}>
+					<Button type="close" onClick={handleModalClose} />
 				</div>
-				<Link href="/" className={styles.logotype}>
-					<Image src={ImageLogo} alt="INCHAPIN" />
-				</Link>
-				<div className={styles.phone}>
-					<span>+7 495 527 21 21</span>
-					<Button type="secondary" hoverAnimation>
-						Заказать звонок
-					</Button>
-				</div>
-				<Select
-					wrapperClassName={styles.selectMobile}
-					instanceId="header-select-mobile"
-					options={flatOptions}
-					isClearable={true}
-					isSearchable={false}
-					placeholder="Выбрать квартиру"
-				/>
-				<Link href="/" className={styles.phoneMobile}>
-					<Image src={ImagePhone} alt="" />
-				</Link>
-			</Container>
-		</div>
+			</Modal>
+		</>
 	);
 };
 

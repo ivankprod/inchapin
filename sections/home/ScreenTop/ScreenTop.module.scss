@@ -1,0 +1,186 @@
+@use "@styles/breakpoints";
+@import "@styles/base";
+
+.screenTop {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 20px;
+
+	@include breakpoints.xl {
+		gap: 50px;
+
+		height: calc(100vh - 123px - 60px);
+		/* 900px смотрится лучше в Chrome FullHD, чем 980px */
+		min-height: calc(900px - 123px - 60px);
+	}
+
+	@include breakpoints.lg {
+		gap: 40px;
+
+		height: calc(100vh - 103px - 40px);
+		min-height: calc(800px - 103px - 40px);
+	}
+
+	@include breakpoints.md {
+		gap: 30px;
+
+		height: calc(100vh - 103px - 40px);
+		min-height: calc(668px - 103px - 40px);
+	}
+
+	@include breakpoints.sm {
+		gap: 40px;
+
+		height: calc(100vh - 126px - 20px);
+		min-height: calc(924px - 126px - 20px);
+	}
+
+	@include breakpoints.xs {
+		gap: 20px;
+
+		height: calc(100vh - 82px - 20px);
+		min-height: calc(540px - 82px - 20px);
+	}
+}
+
+.pictureTop {
+	width: 100%;
+
+	overflow: hidden;
+
+	@include breakpoints.xl {
+		/* Не 600px из-за фикса для Chrome FullHD */
+		min-height: 540px;
+	}
+
+	@include breakpoints.lg {
+		min-height: 506px;
+	}
+
+	@include breakpoints.md {
+		min-height: 411px;
+	}
+
+	@include breakpoints.sm {
+		display: flex;
+		justify-content: center;
+
+		min-height: 488px;
+	}
+
+	@include breakpoints.xs {
+		display: flex;
+		justify-content: center;
+
+		min-height: 314px;
+	}
+}
+
+.pictureTop > img {
+	position: relative;
+	height: auto;
+
+	@include breakpoints.xl {
+		left: 0;
+		top: -227px;
+	}
+
+	@include breakpoints.lg {
+		width: 1389px;
+
+		right: 0;
+		top: -168px;
+	}
+
+	@include breakpoints.md {
+		min-height: 488px;
+		height: 100%;
+		min-width: 100%;
+		width: auto;
+
+		object-fit: cover;
+	}
+
+	@include breakpoints.sm {
+		min-height: 488px;
+		height: 100%;
+		width: auto;
+	}
+
+	@include breakpoints.xs {
+		min-height: 314px;
+		height: 100%;
+		width: auto;
+	}
+}
+
+.bottom {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 20px;
+
+	@include breakpoints.sm {
+		gap: 43px;
+	}
+}
+
+.description {
+	width: 349px;
+
+	color: $theme-color;
+	font-size: 26px;
+	line-height: 140%;
+	text-transform: uppercase;
+
+	@include breakpoints.xl {
+		width: 416px;
+
+		font-size: 31px;
+	}
+
+	@include breakpoints.md {
+		width: 255px;
+
+		font-size: 19px;
+	}
+
+	@include breakpoints.xs {
+		width: 175px;
+
+		font-size: 13px;
+	}
+}
+
+.text {
+	@include breakpoints.xl {
+		height: 137px;
+		width: 862px;
+	}
+
+	@include breakpoints.lg {
+		height: 114px;
+		width: 718px;
+	}
+
+	@include breakpoints.md {
+		height: 88px;
+		width: 553.7px;
+	}
+
+	@include breakpoints.sm {
+		height: auto;
+		width: 100%;
+
+		object-fit: contain;
+	}
+
+	@include breakpoints.xs {
+		height: auto;
+		width: 100%;
+
+		object-fit: contain;
+	}
+}
