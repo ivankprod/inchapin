@@ -9,7 +9,7 @@ import styles from "./Button.module.scss";
 
 interface IButtonOwnProps<E extends ElementType = ElementType> {
 	as?: E;
-	type?: "primary" | "secondary";
+	type?: "primary" | "secondary" | "close";
 	hoverAnimation?: boolean;
 	submit?: boolean;
 }
@@ -56,6 +56,7 @@ export const Button: React.FC<TButtonProps<ElementType>> = <
 			className={clsx(
 				styles.button,
 				styles["button" + capitalize(type)],
+				hoverAnimation && styles.noOpacity,
 				mouseEntered && styles.hovered,
 				className
 			)}

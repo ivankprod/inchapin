@@ -1,0 +1,70 @@
+@import "@styles/base";
+
+.wrapper {
+	position: relative;
+
+	text-align: left;
+}
+
+.filled {
+	& + label {
+		transform: scale(0.8) translateY(-20px);
+	}
+}
+
+.input {
+	position: relative;
+
+	width: 100%;
+	padding: 5px 0;
+
+	background-color: transparent;
+
+	border-bottom: 1px solid #0003;
+
+	font-size: 16px;
+	line-height: 160%;
+	cursor: text;
+
+	z-index: 3;
+
+	&:focus {
+		& + label {
+			transform: scale(0.8) translateY(-20px);
+		}
+	}
+
+	&:-webkit-autofill {
+		background-clip: text;
+		background-color: $background-color !important;
+	}
+}
+
+.placeholder {
+	position: absolute;
+	top: 7px;
+	left: 0;
+
+	padding-right: 8px;
+
+	background-color: $background-color;
+
+	font-size: 16px;
+	text-transform: uppercase;
+	cursor: text;
+
+	z-index: 2;
+
+	transition: transform 0.5s ease-in-out;
+	transform: scale(1) translateY(0);
+	transform-origin: 0% 0%;
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+
+	color: red;
+	font-size: 0.8rem;
+}

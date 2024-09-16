@@ -15,15 +15,17 @@ export const ScreenTop: React.FC = () => {
 					priority
 				/>
 			</div>
-			<p className={styles.description}>
-				Дом бизнес-класса для ценителей роскоши
-			</p>
-			<Image
-				className={styles.text}
-				src={ImageText}
-				alt="Inchapin"
-				draggable={false}
-			/>
+			<div className={styles.bottom}>
+				<p className={styles.description}>
+					Дом бизнес-класса для ценителей роскоши
+				</p>
+				<Image
+					className={styles.text}
+					src={ImageText}
+					alt="Inchapin"
+					draggable={false}
+				/>
+			</div>
 		</section>
 	);
 };

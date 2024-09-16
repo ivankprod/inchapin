@@ -171,3 +171,43 @@
 		display: inline-flex;
 	}
 }
+
+.modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: relative;
+
+	background-color: $background-color;
+}
+
+.closeButton {
+	position: absolute;
+	top: 60px;
+	right: 60px;
+
+	& > button {
+		background-color: $background-color;
+
+		&::before,
+		&::after {
+			background-color: #000;
+		}
+	}
+
+	@include breakpoints.md {
+		top: 50px;
+		right: 50px;
+	}
+
+	@include breakpoints.sm {
+		top: 40px;
+		right: 40px;
+	}
+
+	@include breakpoints.xs {
+		top: 20px;
+		right: 20px;
+	}
+}

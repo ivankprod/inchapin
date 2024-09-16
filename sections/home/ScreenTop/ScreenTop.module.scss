@@ -3,21 +3,44 @@
 
 .screenTop {
 	display: flex;
-	flex-flow: row wrap;
-	align-items: flex-end;
+	flex-direction: column;
 	justify-content: space-between;
-	gap: 40px;
+	gap: 20px;
 
 	@include breakpoints.xl {
 		gap: 50px;
+
+		height: calc(100vh - 123px - 60px);
+		/* 900px смотрится лучше в Chrome FullHD, чем 980px */
+		min-height: calc(900px - 123px - 60px);
+	}
+
+	@include breakpoints.lg {
+		gap: 40px;
+
+		height: calc(100vh - 103px - 40px);
+		min-height: calc(800px - 103px - 40px);
 	}
 
 	@include breakpoints.md {
 		gap: 30px;
+
+		height: calc(100vh - 103px - 40px);
+		min-height: calc(668px - 103px - 40px);
+	}
+
+	@include breakpoints.sm {
+		gap: 40px;
+
+		height: calc(100vh - 126px - 20px);
+		min-height: calc(924px - 126px - 20px);
 	}
 
 	@include breakpoints.xs {
 		gap: 20px;
+
+		height: calc(100vh - 82px - 20px);
+		min-height: calc(540px - 82px - 20px);
 	}
 }
 
@@ -27,29 +50,30 @@
 	overflow: hidden;
 
 	@include breakpoints.xl {
-		height: 600px;
+		/* Не 600px из-за фикса для Chrome FullHD */
+		min-height: 540px;
 	}
 
 	@include breakpoints.lg {
-		height: 506px;
+		min-height: 506px;
 	}
 
 	@include breakpoints.md {
-		height: 411px;
+		min-height: 411px;
 	}
 
 	@include breakpoints.sm {
 		display: flex;
 		justify-content: center;
 
-		height: 488px;
+		min-height: 488px;
 	}
 
 	@include breakpoints.xs {
 		display: flex;
 		justify-content: center;
 
-		height: 314px;
+		min-height: 314px;
 	}
 }
 
@@ -70,17 +94,36 @@
 	}
 
 	@include breakpoints.md {
-		width: 964px;
+		min-height: 488px;
+		height: 100%;
+		min-width: 100%;
+		width: auto;
 
-		margin-top: -73px;
+		object-fit: cover;
 	}
 
 	@include breakpoints.sm {
-		width: 780px;
+		min-height: 488px;
+		height: 100%;
+		width: auto;
 	}
 
 	@include breakpoints.xs {
-		width: 502px;
+		min-height: 314px;
+		height: 100%;
+		width: auto;
+	}
+}
+
+.bottom {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 20px;
+
+	@include breakpoints.sm {
+		gap: 43px;
 	}
 }
 
