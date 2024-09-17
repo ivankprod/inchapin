@@ -16,5 +16,5 @@ Test Next.js / TypeScript project
 - images: изображения и иконки
 - sections: секции страниц
 - shared: общие компоненты - ui-kit, utils и т.д.
-- styles: базвые стили
+- styles: базовые стили
 - types: типы
