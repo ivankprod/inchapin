@@ -26,14 +26,15 @@
 		gap: 30px;
 
 		height: calc(100vh - 103px - 40px);
-		min-height: calc(668px - 103px - 40px);
+		/* Фикс для Google Nest Hub */
+		min-height: calc(613px - 103px - 40px);
 	}
 
 	@include breakpoints.sm {
 		gap: 40px;
 
-		height: calc(100vh - 126px - 20px);
-		min-height: calc(924px - 126px - 20px);
+		height: calc(100vh - 126px - 40px);
+		min-height: calc(924px - 126px - 40px);
 	}
 
 	@include breakpoints.xs {
@@ -59,7 +60,12 @@
 	}
 
 	@include breakpoints.md {
-		min-height: 411px;
+		display: flex;
+		justify-content: center;
+
+		/* Фикс для Google Nest Hub */
+		min-height: 352px;
+		height: 100%;
 	}
 
 	@include breakpoints.sm {
@@ -67,6 +73,7 @@
 		justify-content: center;
 
 		min-height: 488px;
+		height: 100%;
 	}
 
 	@include breakpoints.xs {
@@ -74,6 +81,7 @@
 		justify-content: center;
 
 		min-height: 314px;
+		height: 100%;
 	}
 }
 
